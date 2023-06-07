@@ -10,15 +10,16 @@ function App() {
     const loadedTasks = [];
 
     for (const taskKey in taslobj) {
-      loadedTasks.push({ id: taskKey, text: data[taskKey].text });
+      loadedTasks.push({ id: taskKey, text: taslobj[taskKey].text });
     }
 
     setTasks(loadedTasks);
   };
+  
   const { isLoading, error, sendRequest: fetchTasks } = useFetchApi({
     url: "https://react-http-61eb7-default-rtdb.firebaseio.com/tasks.json",
-    transformTasks,
-  });
+    
+  },transformTasks);
 
 
   useEffect(() => {

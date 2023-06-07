@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 
 export default function useFetchApi(requestConfig, applydata) {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-  const sendRequest = async () => {
+  const  sendRequest = useCallback (async () => {
     setIsLoading(true);
     setError(null);
     try {
@@ -24,7 +24,7 @@ export default function useFetchApi(requestConfig, applydata) {
       setError(err.message || "Something went wrong!");
     }
     setIsLoading(false);
-  };
+  });
 
 
   return{
